@@ -128,18 +128,24 @@ dailyCustomerCount= dailyCustomerCount + alki.randomCustomerPerHour[i];
         }
     }
     CookieShop.prototype.displayData= function(){
+        var totalCookieCount=0;
         this.dailyCookieCount();
         var ul=document.getElementById(this.id);
         for (var i=0; i<storeHours.length; i++){
+            totalCookieCount+= this.cookiesPerHour[i]
             var li=document.createElement('li');
             li.textContent=storeHours[i]+ ": " + this.cookiesPerHour[i] + " cookies";
             ul.appendChild(li);
         }
+        
+        var li=document.createElement('li');
+        li.textContent= totalCookieCount + " cookies total";
+        ul.appendChild(li);
+
+
+
     }
-      /*  for (var i=0; i<storeHours.length; i++){
-            var cookieTotal=document.createElement('li');
-            li.textContent=cookiesPerHour[i]+ ": " + this.cookiesPerHour[15] + " cookies";
-            ul.appendChild(li);*/
+           
     
 
     var pikeShop= new CookieShop('pike', 23, 65, 6.3);
