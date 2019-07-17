@@ -133,12 +133,12 @@ dailyCustomerCount= dailyCustomerCount + alki.randomCustomerPerHour[i];
         var ul=document.getElementById(this.id);
         for (var i=0; i<storeHours.length; i++){
             totalCookieCount+= this.cookiesPerHour[i]
-            var li=document.createElement('li');
+            var li=document.createElement('td');
             li.textContent=storeHours[i]+ ": " + this.cookiesPerHour[i] + " cookies";
             ul.appendChild(li);
         }
         
-        var li=document.createElement('li');
+        var li=document.createElement('td');
         li.textContent= totalCookieCount + " cookies total";
         ul.appendChild(li);
 
