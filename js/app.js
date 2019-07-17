@@ -1,5 +1,5 @@
 
-/*
+/* 
 //1st and Pike
 var pike = {
     customerPerHours: [],
@@ -99,15 +99,17 @@ dailyCustomerCount= dailyCustomerCount + alki.randomCustomerPerHour[i];
     alki.appendChild(gunElement); 
     eastVinewoodElem.appendChild(gunElement); */
 
-    var storeHours =['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm']
+    var storeHours =['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 
-    function CookieShop(name, minCustomerCount, maxCustomerCount, cookiesPerHour){
+    function CookieShop(name, min, max, avg){
 
-        this.name= name;
-        this.minCustomerCount= minCustomerCount;
-        this.maxCustomerCount=maxCustomerCount;
-        this.cookiesPerHour= cookiesPerHour;
-        
+        this.id= name;
+        this.minCustomerCount= min;
+        this.maxCustomerCount=max;
+        this.cookieAverage=avg;
+        this.customersPerHour= [];
+        //being displayed in html
+        this.cookiesPerHour= [];
     }
     //
     CookieShop.prototype.randomCustomerPerHour= function(){
@@ -115,20 +117,59 @@ dailyCustomerCount= dailyCustomerCount + alki.randomCustomerPerHour[i];
     };
 
     CookieShop.prototype.dailyCustomerCount= function(){
-        for (var i=0; i<15; i++){
-            this.cookiesPerHour.push(this.randomCustomerPerHour());
+        for (var i=0; i<storeHours.length; i++){
+            this.customersPerHour.push(this.randomCustomerPerHour());
         }
+    }
+    CookieShop.prototype.dailyCookieCount= function(){
+        this.dailyCustomerCount();
+        for (var i=0; i<storeHours.length; i++){
+            this.cookiesPerHour.push(Math.floor(this.customersPerHour[i]*this.cookieAverage));
+        }
+    }
+    CookieShop.prototype.displayData= function(){
+        var totalCookieCount=0;
+        this.dailyCookieCount();
+        var ul=document.getElementById(this.id);
+        for (var i=0; i<storeHours.length; i++){
+            totalCookieCount+= this.cookiesPerHour[i]
+            var li=document.createElement('li');
+            li.textContent=storeHours[i]+ ": " + this.cookiesPerHour[i] + " cookies";
+            ul.appendChild(li);
+        }
+        
+        var li=document.createElement('li');
+        li.textContent= totalCookieCount + " cookies total";
+        ul.appendChild(li);
 
-    var pikeShop= new CookieShop('Pike', 23, 65, 6.3);
-    var seaTacShop= new CookieShop('SeaTac', 3, 24, 1.2);
-    var seattleCenShop= new CookieShop('Seattle Center', 11, 38, 3.7);
-    var capitolHillShop= new CookieShop('Capitol Hill', 20, 38, 2.3);
-    var alkiShop= new CookieShop('Alki', 2, 16, 4.6);
 
-    //how many cookies are sold at each hour, at each location, put into a an array
-    var salesData= 
+
+    }
+           
     
-    cookieShop()=[];
+
+    var pikeShop= new CookieShop('pike', 23, 65, 6.3);
+    var seaTacShop= new CookieShop('seaTac', 3, 24, 1.2);
+    var seattleCenShop= new CookieShop('seattleCen', 11, 38, 3.7);
+    var capitolHillShop= new CookieShop('capitolHill', 20, 38, 2.3);
+    var alkiShop= new CookieShop('alki', 2, 16, 4.6);
+    
+    pikeShop.displayData();
+    seaTacShop.displayData();
+    seattleCenShop.displayData();
+    capitolHillShop.displayData();
+    alkiShop.displayData();
+
+    
+   
+
+
+
+
+    //I want how many cookies are sold at each hour, at each location, put into  an array, and then a table, rendered on my html page
+    //var salesData= ?    CookieShop()=[]?
+    
+    
 
 
 
