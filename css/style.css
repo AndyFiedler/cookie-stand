@@ -1,11 +1,55 @@
 body {
-    background-color: salmon;
+    margin: 0;
+    background-color: beige;
+  }
+  
+  /* Optional. To make navbar looks nicer */
+  #main-navbar {
+    font: 1.15em Arial;
+    background:salmon;
+    margin-bottom: 10px;
+  }
+  
+  /* Remove default <ul> margin and padding */
+  #main-navbar ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  #main-navbar li {
+    /* Use inline-block so that every element can have its height and width property */
+    display: inline-block;
+    /* Give padding so there's space above / below / on the sides of the menu */
+    padding: 10px 20px;
+  }
+  
+  #main-navbar li a {
+    /* Remove the underline for the link */
+    text-decoration: none;
+    color: whitesmoke;
+  }
+  
+  #main-navbar li a:hover {
+    /* When hovering around the menu, there'll be bottom border 3px width, distance is 3px from the menu */
+    border-bottom: 3px solid;
+    padding-bottom: 3px;
+    /* Optional, brighter color so the menu looks like highlighted */
+    color: #666;
+  }
+ 
+  table {
+    /* table-layout: fixed; */
+    width: 100%;
+    border-collapse: collapse;
+    border: 3px solid brown;
+  }
 
-}
-h1, h2, h3 {
+    th, td {
+        border: 2px solid brown;
+      }
 
-}
+  tr {
 
-ul {
-
-}
+    
+  }
+  
