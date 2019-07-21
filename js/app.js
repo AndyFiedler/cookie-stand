@@ -11,7 +11,7 @@
         this.customersPerHour= [];
         //being displayed in html
         this.cookiesPerHour= [];
-
+ 
     }
     //
     CookieShop.prototype.randomCustomerPerHour= function(){
@@ -33,6 +33,7 @@
         var totalCookieCount=0;
         this.dailyCookieCount();
         var tbody = document.getElementsByTagName('tbody')[0];
+        console.log(tbody);
         var newTr= document.createElement('tr');
         tbody.appendChild(newTr);
         var newTd= document.createElement('td');
@@ -59,10 +60,10 @@
     
 
     var pikeShop= new CookieShop('Pike', 23, 65, 6.3);
-    var seaTacShop= new CookieShop('seaTac', 3, 24, 1.2);
-    var seattleCenShop= new CookieShop('seattleCen', 11, 38, 3.7);
-    var capitolHillShop= new CookieShop('capitolHill', 20, 38, 2.3);
-    var alkiShop= new CookieShop('alki', 2, 16, 4.6);
+    var seaTacShop= new CookieShop('SeaTac', 3, 24, 1.2);
+    var seattleCenShop= new CookieShop('Seattle Center', 11, 38, 3.7);
+    var capitolHillShop= new CookieShop('Capitol Hill', 20, 38, 2.3);
+    var alkiShop= new CookieShop('Alki', 2, 16, 4.6);
     
 
 
@@ -124,11 +125,41 @@
    
 createTable();
 
+var form = document.getElementById('newshop');
+
+preventDefault();
+
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    /*
+    <label>Shop Name:</label>
+                <input type="text" name="id" size="20"><br>
+                <label>Minimum Customers</label>
+                <input type="text" name="minCustomers" size="20"><br>
+                <label>Maximum Customers</label>
+                <input type="text" name="maxCustomers" size="20"><br>
+                <label>Average Cookies Per Customer</label>
+                <input type="text" name="cookieAverage" size="20"><br>
+                <input type="submit" value="Add a Shop"><br>
+    */
+   var name = document.getElementById('name').value;
+   var minCustomers = document.getElementById('minCustomers').value;
+   var maxCustomers = document.getElementById('maxCustomers').value;
+   var avgCustomers = document.getElementById('cookieAverage').value;
+
+   var newShop = new CookieShop(name, minCustomers, maxCustomers, avgCustomers);
+   newShop.displayData();
+
+   var table = document.getElementById('sales-data');
+   var footer = document.querySelector('table#sales-data tfoot');
+   footer.innerHTML = '';
+   createFooter();
 
 
-    //I want how many cookies are sold at each hour, at each location, put into  an array, and then a table, rendered on my html page
-    //var salesData= ?    CookieShop()=[]?
-    
+});
+
+
+
     
 
 

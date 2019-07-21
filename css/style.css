@@ -1,11 +1,11 @@
 body {
     margin: 0;
-    background-color: beige;
+    background-color: rgb(245, 197, 166);
   }
   
   /* Optional. To make navbar looks nicer */
   #main-navbar {
-    font: 1.15em Arial;
+    font-family:'Indie Flower', cursive;
     background:salmon;
     margin-bottom: 10px;
   }
@@ -39,17 +39,32 @@ body {
  
   table {
     /* table-layout: fixed; */
-    width: 100%;
+    width: 95%;
     border-collapse: collapse;
     border: 3px solid brown;
+    margin-top: 40px;
+    margin-bottom: 35px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: aliceblue;
   }
 
     th, td {
         border: 2px solid brown;
+        text-align: center;
       }
 
   tr {
-
+    color:black;
     
+  }
+  th, thead {
+      font-weight: bold;
+  }
+
+  fieldset {
+      width: 200px;
+      float: right;
+      margin: 40px 40px 40px;
   }
   
